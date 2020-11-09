@@ -11,6 +11,7 @@ class Login implements ActionListener {
     JLabel label2 = new JLabel("Password: ");
     JLabel incorrectInput = new JLabel("Incorrect Username/Password");
     boolean adminPrivC = false;
+    static String current;
 
     Login() {
         setLayouts();
@@ -52,16 +53,22 @@ class Login implements ActionListener {
         frame.remove(loginButton);
     }
 
+    public static String getCurrentUser() {
+        return current;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (Data.findUsername(userName.getText()) == true) {
             if (Data.checkPassword(userName.getText(), passWord.getText()) == true) {
                 if (Data.checkPriv(userName.getText(), passWord.getText()) == true) {
+                    current = userName.getText();
                     clearLogin();
                     frame.setVisible(false);
                     frame.pack();
                     new Admin();
                 } else {
+                    current = userName.getText();
                     clearLogin();
                     frame.setVisible(false);
                     frame.pack();

@@ -1,5 +1,5 @@
 public class BankAccount {
-    private static double balance;
+    public double balance;
     String first;
     String last;
     String mail;
@@ -35,7 +35,7 @@ public class BankAccount {
         return phone;
     }
 
-    public static double getBalance() {
+    public double getBalance() {
         return balance;
     }
 
@@ -51,5 +51,11 @@ public class BankAccount {
         return password;
     }
 
-    public static void setBalance(double a) {balance = a;}
+    public void depositMoney(double a) {
+        balance += a;
+    }
+
+    public void withdrawMoney(double a) {
+        balance -= a;
+    }
 }

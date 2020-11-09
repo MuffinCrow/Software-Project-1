@@ -46,6 +46,19 @@ public class Data {
         return true;
     }
 
+    public static BankAccount returnUser(String a) {
+        for(BankAccount account : database) {
+            if (account != null && account.getUsername().equals(a)) {
+                return account;
+            }
+        }
+        return null;
+    }
+
+    public void changeBalance(String a, double b) {
+
+    }
+
     public static String dataInsert(int a, int d) {
         switch (d) {
             case 0:

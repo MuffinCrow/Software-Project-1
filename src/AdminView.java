@@ -89,7 +89,6 @@ class AdminView implements ActionListener{
                 frame.dispose();
                 frame.pack();
                 new Admin();
-                System.out.print("Press");
                 break;
         }
     }

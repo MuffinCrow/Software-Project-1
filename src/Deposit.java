@@ -3,8 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 class Deposit implements ActionListener {
+    String current1 = Login.getCurrentUser();
+    BankAccount current2 = Data.returnUser(current1);
     JFrame frame = new JFrame();
-    JLabel b = new JLabel(String.valueOf(BankAccount.getBalance()));
+    JLabel b = new JLabel(String.valueOf(current2.getBalance()));
     JTextField input = new JTextField();
     JButton back = new JButton("Back");
     JButton depo = new JButton("Deposit");
@@ -33,10 +35,15 @@ class Deposit implements ActionListener {
         }
         if(e.getActionCommand().equals("d")) {
             if(input.getText() != null) {
-                BankAccount.setBalance(Double.valueOf(input.getText()));
+                Data.returnUser(Login.getCurrentUser()).depositMoney(Double.valueOf(input.getText()));
             }
+
             frame.remove(b);
             frame.remove(input);
+            current1 = Login.getCurrentUser();
+            current2 = Data.returnUser(current1);
+            b = new JLabel(String.valueOf(current2.getBalance()));
+            input = new JTextField();
             frame.add(b,0);
             frame.add(input,1);
             frame.pack();
